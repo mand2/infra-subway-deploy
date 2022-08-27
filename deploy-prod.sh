@@ -69,9 +69,9 @@ function deploy() {
   build_file=$(find $SHELL_SCRIPT_PATH/* -name "subway*.jar")
   echo -e "${txtgra} find jar file $build_file ${txtrst}"
 
-  $(nohup java -Dspring.profiles.active=$PROFILE  \
-                      -Djava.security.egd=file:/dev/./urandom  \
-                      -jar $build_file 1> web-log.txt 2>&1 &)
+  nohup java -Dspring.profiles.active=$PROFILE  \
+  -Djava.security.egd=file:/dev/./urandom  \
+  -jar $build_file 1> web-log.txt 2>&1 &
 }
 
 function is_deploy_success() {
