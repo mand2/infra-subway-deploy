@@ -41,7 +41,7 @@ function check_df() {
 
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
-    exit 0
+    exit 1
   fi
 }
 
