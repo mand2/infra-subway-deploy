@@ -37,13 +37,16 @@ function check_df() {
   checkout_branch
 
   master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+  echo -e "${txtylw} master: $master ${txtrst}"
+  echo -e "${txtylw} remote: $remote ${txtrst}"
 
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
     exit 1
   fi
 }
+
 
 function pull() {
   echo -e ""
@@ -100,7 +103,7 @@ function kill_old_pid() {
   if [ $OLD_PID -eq -1 ]; then
     echo -e "${txtred} no running pid ${txtrst}"
   else
-    kill -2 $OLD_PID
+    kill -9 $OLD_PID
     echo -e "${txtylw} kill running pid [ $OLD_PID ] ${txtrst}"
   fi
 }
